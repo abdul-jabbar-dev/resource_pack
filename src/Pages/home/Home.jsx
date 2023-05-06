@@ -1,10 +1,14 @@
+import SearchbarHome from "../../Components/Home/Searchbar.home";
+import { useGetCourseQuery } from "../../Redux/Api/course.api";
 import Courses from "../courses/Courses";
 
- 
+
 const Home = () => {
+    const { data } = useGetCourseQuery()
     return (
         <div>
-           <Courses></Courses>
+            <SearchbarHome />
+            <Courses courses={data}></Courses>
         </div>
     );
 }

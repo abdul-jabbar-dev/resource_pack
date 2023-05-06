@@ -1,13 +1,11 @@
+import { NavLink } from "react-router-dom";
 
 const DashNav = () => {
     return (
-        <div className="container mx-auto">
-            <div className="w-full bg-slate-500 h-7">
-
-            </div>
-            <div className="flex w-full" >
-                <div className="w-1/4 bg-slate-800 h-96">1</div>
-                <div className="w-3/4 bg-slate-300 h-96">2</div> 
+        <div className="relative h-full">
+            <div className="flex text-xl flex-col absolute font-light top-60 left-1/2 transform -translate-x-1/2  ">
+                <NavLink end className={({ isActive }) => isActive ? "text-blue-500" : " text-stone-800"} to={''}>Dashboard</NavLink>
+                <NavLink className={({ isActive }) => isActive ? "text-blue-500" : " text-stone-800"} to={'courses'}>Courses</NavLink>
             </div>
         </div>
     );
