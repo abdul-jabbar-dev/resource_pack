@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { usePostCourseMutation } from "../../../../Redux/Api/course.api";
-import getFormData from "../../../../utils/objectToFormData";
+import getFormData from "../../../../utils/objectToFormData"; 
+import Alert from "../../../../components/Alert"; 
 import Loading from "../../../../Components/Loading";
-import Alert from "../../../../Components/Alert";
 
 const CreateCourse = () => {
     const navigate = useNavigate()
@@ -14,6 +14,7 @@ const CreateCourse = () => {
     const onSubmit = (data) => {
         courseMutation(getFormData({ ...data, thumbnail: data.thumbnail[0] }))
     };
+    
     let alerts;
     if (isLoading) {
         return <Loading></Loading>

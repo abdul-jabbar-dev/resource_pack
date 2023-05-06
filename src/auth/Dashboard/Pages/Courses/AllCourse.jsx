@@ -1,11 +1,17 @@
 
 import { Link } from "react-router-dom";
 import { useGetCourseQuery, useDeleteACourseMutation } from "../../../../Redux/Api/course.api";
-import ConfirmModal from "../../../../Components/Dashboard/ConfirmModal";
+import DeleteCourseModal from "../../../../components/Dashboard/DeleteCourseModal";
+import EditCourseModel from "../../../../components/Dashboard/EditCourseModel";
 const AllCourse = () => {
     const { "0": deleteMutation, "1": { isLoading: deleteIsLoading, originalArgs } } = useDeleteACourseMutation()
     const { data, isSuccess } = useGetCourseQuery()
-
+    const getSearchValue = (word) => {
+        data.forEach(element => {
+            console.log((element.name).toLowerCase().includes(word.toLowerCase()))
+        });
+        console.log(word)
+    }
     return (
         <div className="">
             <div className="flex items-center mt-4 gap-3 ">
@@ -18,7 +24,7 @@ const AllCourse = () => {
                 </Link>
 
                 <div className="relative w-4/12 border py-2 rounded-md">
-                    <input type="text" className=" h-full outline-none pr-12 pl-3 w-full" />
+                    <input type="search" onChange={e => getSearchValue(e.target.value)} className=" h-full outline-none pr-12 pl-3 w-full" />
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth=".8" stroke="currentColor" className="w-6 absolute top-2 right-3 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                     </svg>
@@ -26,16 +32,17 @@ const AllCourse = () => {
             </div>
 
             <div className="overflow-hidden rounded-lg border border-gray-200 shadow-md  mt-2">
-                <table className="w-full border-collapse bg-white text-left text-sm text-gray-500"><thead className="bg-gray-50">
-                    <tr>
-                        <th scope="col" className="px-6 py-4 font-medium text-gray-900">Name</th>
-                        <th scope="col" className="px-6 py-4 font-medium text-gray-900">State</th>
-                        <th scope="col" className="px-6 py-4 font-medium text-gray-900">Courses</th>
-                        <th scope="col" className="px-6 py-4 font-medium text-gray-900">Tages</th>
-                        <th scope="col" className="px-6 py-4 font-medium text-gray-900">
-                        </th>
-                    </tr>
-                </thead>
+                <table className="w-full border-collapse bg-white text-left text-sm text-gray-500">
+                    <thead className="bg-gray-50">
+                        <tr>
+                            <th scope="col" className="px-6 py-4 font-medium text-gray-900">Name</th>
+                            <th scope="col" className="px-6 py-4 font-medium text-gray-900">State</th>
+                            <th scope="col" className="px-6 py-4 font-medium text-gray-900">Courses</th>
+                            <th scope="col" className="px-6 py-4 font-medium text-gray-900">Tages</th>
+                            <th scope="col" className="px-6 py-4 font-medium text-gray-900">
+                            </th>
+                        </tr>
+                    </thead>
                     <tbody className="divide-y divide-gray-100 border-t border-gray-100">
                         {isSuccess && data.map((item, i) =>
                             <tr key={i} className="hover:bg-gray-50">
@@ -65,15 +72,8 @@ const AllCourse = () => {
                                 <td className="px-6 py-4">
 
                                     <div className="flex justify-end gap-4">
-                                        <ConfirmModal
-                                            key={i + item._id }
-                                            editOption={[item, deleteMutation, deleteIsLoading, originalArgs]} />
-                                        <ConfirmModal
-                                            key={i+item._id}
-                                            deleteOption={[item]}
-                                        />
-
-
+                                        <DeleteCourseModal item={item} deleteMutation={deleteMutation} deleteIsLoading={deleteIsLoading} originalArgs={originalArgs} />
+                                        <EditCourseModel item={item} deleteMutation={deleteMutation} deleteIsLoading={deleteIsLoading} originalArgs={originalArgs} />
                                     </div>
                                 </td>
                             </tr>)}
