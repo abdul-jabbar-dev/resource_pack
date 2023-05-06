@@ -1,9 +1,9 @@
 
 import { Link } from "react-router-dom";
-import { useGetCourseQuery, useDeleteACourseMutation } from "../../../Redux/Api/course.api";
-import ConfirmModal from "../../../Components/Dashboard/ConfirmModal";
+import { useGetCourseQuery, useDeleteACourseMutation } from "../../../../Redux/Api/course.api";
+import ConfirmModal from "../../../../Components/Dashboard/ConfirmModal";
 const AllCourse = () => {
-    const { "0": deleteMutation, "1": deleteMutationState } = useDeleteACourseMutation()
+    const { "0": deleteMutation, "1": { isLoading: deleteIsLoading, originalArgs } } = useDeleteACourseMutation()
     const { data, isSuccess } = useGetCourseQuery()
 
     return (
@@ -65,13 +65,15 @@ const AllCourse = () => {
                                 <td className="px-6 py-4">
 
                                     <div className="flex justify-end gap-4">
-                                        <ConfirmModal courseId={item._id} deleteMutation={deleteMutation} />
+                                        <ConfirmModal
+                                            key={i + item._id }
+                                            editOption={[item, deleteMutation, deleteIsLoading, originalArgs]} />
+                                        <ConfirmModal
+                                            key={i+item._id}
+                                            deleteOption={[item]}
+                                        />
 
-                                        <a href="#">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-6 w-6"   >
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
-                                            </svg>
-                                        </a>
+
                                     </div>
                                 </td>
                             </tr>)}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Alert = () => {
+const Alert = (props) => {
     const { title, massage, err = true } = props
     const [isOpen, setIsOpen] = useState((title || massage) ? true : false)
     if (isOpen) {

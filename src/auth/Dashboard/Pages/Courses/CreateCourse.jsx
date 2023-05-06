@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { usePostCourseMutation } from "../../../Redux/Api/course.api";
-import getFormData from "../../../utils/objectToFormData";
-import Loading from "../../../Components/Loading";
-import Alert from "../../../Components/Alert";
+import { usePostCourseMutation } from "../../../../Redux/Api/course.api";
+import getFormData from "../../../../utils/objectToFormData";
+import Loading from "../../../../Components/Loading";
+import Alert from "../../../../Components/Alert";
 
 const CreateCourse = () => {
     const navigate = useNavigate()
@@ -28,7 +28,10 @@ const CreateCourse = () => {
         <div>
             {(true || isError) && alerts}
             <div className="w-full mx-auto bg-white  ">
-                <button onClick={() => navigate('/dashboard/courses')} className=" flex mt-4 gap-2 items-center text-center tracking-[.20em]  px-5 text-sm border  mb-3 text-gray-800 hover:bg-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 font-light rounded-md py-2.5 duration-300 transition-colors focus:outline-none">
+                <button
+                    onClick={() => navigate('/dashboard/courses')}
+                    className=" flex mt-4 gap-2 items-center text-center tracking-[.20em]  px-5 text-sm border  mb-3 text-gray-800 hover:bg-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 font-light rounded-md py-2.5 duration-300 transition-colors focus:outline-none"
+                >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth=".6" stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
                     </svg>
@@ -82,7 +85,8 @@ const CreateCourse = () => {
 
                     </div>
 
-                    {isLoading ? <div className="w-6 h-6  rounded-3xl animate-spin  border-x-2"></div> : <button type="submit" className="mt-6 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>}
+                    {isLoading ? <div className="w-6 h-6  rounded-3xl animate-spin  border-x-2"></div> : <button type="submit" className="mt-6 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                    }
                 </form>
 
             </div>

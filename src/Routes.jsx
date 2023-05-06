@@ -1,10 +1,11 @@
 import Courses from "./Pages/courses/Courses";
 import Home from "./Pages/home/Home";
-import RootLayout from "./RootLayout";
-import AllCourse from "./auth/Dashboard/Pages/AllCourse";
-import CreateCourse from "./auth/Dashboard/Pages/CreateCourse";
+import RootLayout from "./RootLayout"; 
+import AllCourse from "./auth/Dashboard/Pages/Courses/AllCourse";
+import CreateCourse from "./auth/Dashboard/Pages/Courses/CreateCourse";
 import DashLayout from "./auth/Dashboard/Pages/DashLayout";
 import Dashboard from "./auth/Dashboard/Pages/Dashboard";
+ 
 
 const Routes = () => {
     return [
@@ -34,8 +35,7 @@ const Routes = () => {
                 }, {
                     path: "courses",
                     element: (<AllCourse />),
-                },
-                {
+                }, {
                     path: "courses/create",
                     element: (<CreateCourse />)
                 }
