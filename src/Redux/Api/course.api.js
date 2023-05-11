@@ -9,7 +9,7 @@ export const courseApi = createApi({
 
         getCourse: builder.query({
             query: () => `/course`,
-            providesTags:["course"]
+            providesTags: ["course"]
         }),
         postCourse: builder.mutation({
             query: (data) => ({
@@ -17,6 +17,15 @@ export const courseApi = createApi({
                 body: data,
                 method: "POST"
             }),
+            invalidatesTags: ["course"]
+        }), updateCourse: builder.mutation({
+            query: ({ courseId, data }) => { 
+                return ({
+                    url: `/course/${courseId}`,
+                    body: data,
+                    method: "PUT"
+                })
+            },
             invalidatesTags: ["course"]
         }),
         deleteACourse: builder.mutation({
@@ -30,4 +39,4 @@ export const courseApi = createApi({
     })
 })
 
-export const { useGetCourseQuery, usePostCourseMutation, useDeleteACourseMutation } = courseApi    
+export const { useGetCourseQuery, usePostCourseMutation, useDeleteACourseMutation, useUpdateCourseMutation } = courseApi    
