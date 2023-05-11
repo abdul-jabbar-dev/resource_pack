@@ -21,7 +21,7 @@ const Courses = ({ courses }) => {
 
                 <div className="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
                     {courses?.map((cours, i) => <div key={i} className="lg:flex">
-                        <img className="object-cover w-full h-56 rounded-lg lg:w-64" src={cours.img} alt="" />
+                        <img className="object-cover w-full h-56 rounded-lg lg:w-64" src={"http://localhost:4000/" + cours.thumbnail} alt="" />
 
                         <div className="flex flex-col justify-between py-6 lg:mx-6">
                             <a href="#" className="text-xl font-semibold text-gray-800 hover:underline ">
