@@ -77,16 +77,16 @@ const CreateCourse = () => {
                         </div>
                         <div>
                             <label htmlFor="duration" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Total course duration </label>
-                            <input {...register("duration", { required: true })} type="text" name="duration" id="duration" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="5h" required />
+                            <input {...register("duration",     )} type="text" name="duration" id="duration" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="5h" required />
                         </div>
                         <div>
                             <label htmlFor="total_lectures" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Total course lectures </label>
-                            <input {...register("total_lectures", { required: true })} type="text" name="total_lectures" id="total_lectures" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="20" required />
+                            <input {...register("total_lectures")} type="text" name="total_lectures" id="total_lectures" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="25" />
                         </div>
                         <div>
                             <label htmlFor="tags" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Add tags </label>
-                            <input ref={tagsInput} type="text" name="tags" id="tags" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder=" Add tags"   />
-                            <div onClick={getTags} className="  rounded-full w-6 h-5 bg-orange-700 inline" >Add Tags</div>
+                            <input ref={tagsInput} type="text" name="tags" id="tags" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder=" Add tags" />
+                            <div onClick={getTags} className="  rounded px-2 text-white cursor-pointer w-6 h-8 bg-orange-700 inline" >Add Tags</div>
                             {
                                 alltags.map((aTag, i) => <li key={i} className="flex">{aTag}
                                     <svg onClick={() => setAlltags(alltags.filter(olL => olL !== aTag))} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={.5} stroke="currentColor" className="w-6 h-6">
@@ -110,7 +110,7 @@ const CreateCourse = () => {
                             <input type="text" name="courseLink" id="courseLink" className="bg-gray-50 border mb-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Free course link" ref={linksInput} />
 
-                            <div onClick={getLinks} className="  rounded-full w-6 h-5 bg-orange-700 inline" >Add</div>
+                            <div onClick={getLinks} className="  rounded px-2 text-white cursor-pointer w-6 h-8 bg-orange-700 inline" >Add</div>
                             {
                                 allLinks.map((aLinks, i) => <li key={i} className="flex">{aLinks}
                                     <svg onClick={() => setAllLinks(allLinks.filter(olL => olL !== aLinks))} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={.5} stroke="currentColor" className="w-6 h-6">

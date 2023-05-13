@@ -3,23 +3,13 @@ import { Disclosure} from '@headlessui/react'
 import { NavLink } from 'react-router-dom'
 const RootNav = () => {
 
-  const user = {
-    name: 'Tom Cook',
-    email: 'tom@RootNavbar.com',
-    imageUrl:
-      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  }
   const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'Course', href: '/courses' },
+    // { name: 'Home', href: '/' },
+    // { name: 'Course', href: '/courses' },
     { name: 'Dashboard', href: '/dashboard' },
 
   ]
-  const userNavigation = [
-    { name: 'Your Profile', href: '#' },
-    { name: 'Settings', href: '#' },
-    { name: 'Sign out', href: '#' },
-  ]
+
 
 
   return (
@@ -30,11 +20,11 @@ const RootNav = () => {
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
-                  <img
+                  {/* <img
                     className="h-8 w-8"
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                     alt="Your Company"
-                  />
+                  /> */}
                 </div>
                 <div className="hidden md:block">
                   <div className="ml-10 flex items-baseline space-x-4">
