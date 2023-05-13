@@ -1,5 +1,8 @@
 
-const SearchbarHome = () => {
+const SearchbarHome = ({ setSearchString }) => {
+    const getSearch = (word) => {
+        setSearchString(word) 
+    }
     return (
         <div>
             <header className="mx-auto max-w-screen-2xl my-6 sm:px-6 lg:px-8">
@@ -16,7 +19,8 @@ const SearchbarHome = () => {
 
                     <div className=" relative mx-auto w-1/3 h-min  text-gray-600">
 
-                        <input className=" text-xl border-2 border-gray-300 w-full bg-white  h-14 px-5 pr-16 rounded-full  focus:outline-none"
+                        <input onChange={e => getSearch(e.target.value)}
+                            className=" text-xl border-2 border-gray-300 w-full bg-white  h-14 px-5 pr-16 rounded-full  focus:outline-none"
                             type="search" name="search" placeholder="Search" >
                         </input>
 

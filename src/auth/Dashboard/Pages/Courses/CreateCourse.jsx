@@ -1,20 +1,34 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { usePostCourseMutation } from "../../../../Redux/Api/course.api";
-import getFormData from "../../../../utils/objectToFormData"; 
-import Alert from "../../../../components/Alert"; 
+import getFormData from "../../../../utils/objectToFormData";
+import Alert from "../../../../components/Alert";
 import Loading from "../../../../Components/Loading";
-
+import { useRef, useState } from "react";
 const CreateCourse = () => {
+    const linksInput = useRef(null);
+    const tagsInput = useRef(null);
     const navigate = useNavigate()
     const { register, handleSubmit } = useForm();
     const { "0": courseMutation, "1": courseMutationState } = usePostCourseMutation()
     const { isError, isLoading, isSuccess, error } = courseMutationState
-
+    const [allLinks, setAllLinks] = useState([])
+    const [alltags, setAlltags] = useState([])
     const onSubmit = (data) => {
-        courseMutation(getFormData({ ...data, thumbnail: data.thumbnail[0] }))
+        courseMutation(getFormData({ ...data, courseLink: allLinks, tags: alltags, thumbnail: data.thumbnail[0] }))
     };
-    
+
+    const getLinks = () => {
+        if ((linksInput.current.value).length > 0) {
+            setAllLinks([...allLinks, linksInput.current.value])
+        }
+    }
+    console.log(alltags)
+    const getTags = () => {
+        if ((tagsInput.current.value).length > 0) {
+            setAlltags([...alltags, tagsInput.current.value])
+        }
+    }
     let alerts;
     if (isLoading) {
         return <Loading></Loading>
@@ -69,6 +83,43 @@ const CreateCourse = () => {
                             <label htmlFor="total_lectures" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Total course lectures </label>
                             <input {...register("total_lectures", { required: true })} type="text" name="total_lectures" id="total_lectures" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="20" required />
                         </div>
+                        <div>
+                            <label htmlFor="tags" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Add tags </label>
+                            <input ref={tagsInput} type="text" name="tags" id="tags" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder=" Add tags"   />
+                            <div onClick={getTags} className="  rounded-full w-6 h-5 bg-orange-700 inline" >Add Tags</div>
+                            {
+                                alltags.map((aTag, i) => <li key={i} className="flex">{aTag}
+                                    <svg onClick={() => setAlltags(alltags.filter(olL => olL !== aTag))} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={.5} stroke="currentColor" className="w-6 h-6">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </li>)
+                            }
+                        </div>
+
+                    </div>
+                    <div className="my-9 border py-3 px-2 rounded-lg">
+                        <p className="font-semibold uppercase">Links</p>
+                        <div className="my-2">
+                            <label htmlFor="courseMainLink" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Main Course Link</label>
+                            <input {...register("courseMainLink",)} type="text" name="courseMainLink" id="courseMainLink" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Course sourse link" />
+                        </div>
+                        <div className="my-2">
+                            <label htmlFor="courseLink" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Free Course Link</label>
+
+                            <input type="text" name="courseLink" id="courseLink" className="bg-gray-50 border mb-1 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Free course link" ref={linksInput} />
+
+                            <div onClick={getLinks} className="  rounded-full w-6 h-5 bg-orange-700 inline" >Add</div>
+                            {
+                                allLinks.map((aLinks, i) => <li key={i} className="flex">{aLinks}
+                                    <svg onClick={() => setAllLinks(allLinks.filter(olL => olL !== aLinks))} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={.5} stroke="currentColor" className="w-6 h-6">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </li>)
+                            }
+                        </div>
+
 
                     </div>
                     <div className="mb-6">
@@ -85,7 +136,6 @@ const CreateCourse = () => {
                         <input multiple={false} {...register("thumbnail", { required: true })} name="thumbnail" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required id="thumbnail" type="file" />
 
                     </div>
-
                     {isLoading ? <div className="w-6 h-6  rounded-3xl animate-spin  border-x-2"></div> : <button type="submit" className="mt-6 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                     }
                 </form>

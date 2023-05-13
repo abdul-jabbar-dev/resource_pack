@@ -14,8 +14,7 @@ const AllCourse = () => {
             setSearchData(data?.filter(item => ((item.name).toLowerCase()).includes(word.toLowerCase())))
         } else {
             setSearchData([])
-        }
-        console.log(searchData, word)
+        } 
     }
 
     return (
@@ -62,7 +61,7 @@ const AllCourse = () => {
                             <tr key={i} className="hover:bg-gray-50">
                                 <th className="flex gap-3 px-6 py-4 font-normal text-gray-900">
                                     <div className="relative h-16 w-16">
-                                        <img className="h-full w-full rounded-md object-cover object-center" src={"http://localhost:4000/" + item.thumbnail} alt="" />
+                                        <img className="h-full w-full rounded-md object-cover object-center" src={"http://localhost:4000/" + item.thumbnail} alt={item.name} />
                                     </div>
                                     <div className="text-sm">
                                         <div className="font-medium text-gray-700">{item.name}</div>
