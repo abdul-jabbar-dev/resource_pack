@@ -1,20 +1,19 @@
 
 import { Link } from "react-router-dom";
 import { useGetCourseQuery, useDeleteACourseMutation } from "../../../../Redux/Api/course.api";
-import DeleteCourseModal from "../../../../components/Dashboard/DeleteCourseModal";
-import EditCourseModel from "../../../../components/Dashboard/EditCourseModel";
+import DeleteCourseModal from "../../../../components/Dashboard/DeleteCourseModal"; 
 import { useState } from "react";
+import EditCourseModel from "../../../../Components/Dashboard/EditCourseModel";
 const AllCourse = () => {
     const [searchData, setSearchData] = useState([])
     const { "0": deleteMutation, "1": { isLoading: deleteIsLoading, originalArgs } } = useDeleteACourseMutation()
-    const { data, isSuccess } = useGetCourseQuery()
-
+    const { data, isSuccess } = useGetCourseQuery() 
     const getSearchValue = (word) => {
         if (word) {
             setSearchData(data?.filter(item => ((item.name).toLowerCase()).includes(word.toLowerCase())))
         } else {
             setSearchData([])
-        } 
+        }
     }
 
     return (
@@ -41,8 +40,7 @@ const AllCourse = () => {
                                 <EditCourseModel key={i} item={sd} deleteMutation={deleteMutation} deleteIsLoading={deleteIsLoading} originalArgs={originalArgs} fromSD={true} />)
                         }
 
-                    </div>
-                </div>
+                    </div></div>
             </div>
 
             <div className="overflow-hidden rounded-lg border border-gray-200 shadow-md  mt-2">
@@ -51,9 +49,10 @@ const AllCourse = () => {
                         <tr>
                             <th scope="col" className="px-6 py-4 font-medium text-gray-900">Name</th>
                             <th scope="col" className="px-6 py-4 font-medium text-gray-900">State</th>
-                            <th scope="col" className="px-6 py-4 font-medium text-gray-900">Courses</th>
+                            <th scope="col" className="px-6 py-4 font-medium text-gray-900">Post_at</th>
+                            <th scope="col" className="px-6 py-4 font-medium text-gray-900">Category</th> 
                             <th scope="col" className="px-6 py-4 font-medium text-gray-900">Tages</th>
-                            <th scope="col" className="px-6 py-4 font-medium text-gray-900"> </th>
+                            <th scope="col" className="px-3 py-4 font-medium text-gray-900">Edit </th>
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-100 border-t border-gray-100">
@@ -65,24 +64,35 @@ const AllCourse = () => {
                                     </div>
                                     <div className="text-sm">
                                         <div className="font-medium text-gray-700">{item.name}</div>
-                                        <div className="text-gray-400">{item.description}</div>
+                                        <div className="text-gray-400">{item.description.slice(0,80)}</div>
                                     </div>
                                 </th>
+
                                 <td className="px-6 py-4">
-                                    <span className="inline-flex items-center gap-1 rounded-md bg-green-50 px-2 py-1 text-xs font-semibold text-green-600" >
+
+                                    {item.status === 'Active' ? <span className="inline-flex items-center gap-1 rounded-md bg-green-50 px-2 py-1 text-xs font-semibold text-green-600" >
                                         <span className="h-1.5 w-1.5 rounded-md bg-green-600"></span>
-                                        Active
-                                    </span>
+                                        {item.status}
+                                    </span> : <span className="inline-flex items-center gap-1 rounded-md bg-green-50 px-2 py-1 text-xs font-semibold text-red-600" >
+                                        <span className="h-1.5 w-1.5 rounded-md bg-red-600"></span>
+                                        {item.status}
+                                    </span>}
                                 </td>
-                                <td className="px-6 py-4">Product Designer</td>
                                 <td className="px-6 py-4">
-                                    <div className="flex gap-2">
-
-                                        <span className="inline-flex items-center gap-1 rounded-md bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600" >  Design </span>
-
+                                    {
+                                        new Date(item.createdAt).toDateString()
+                                    }
+                                </td>
+                                <td className="px-6 py-4">{item.category}</td>
+                                <td className="px-6 py-4">
+                                    <div className="flex flex-wrap gap-2">
+                                        {
+                                            item.tags.map(((atag, i) => <span key={i} className="inline-flex items-center gap-1 rounded-md bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-600" >{atag}</span>
+                                            ))
+                                        }
                                     </div>
                                 </td>
-                                <td className="px-6 py-4">
+                                <td className="px-3 py-4">
 
                                     <div className="flex justify-end gap-4">
                                         <DeleteCourseModal item={item} deleteMutation={deleteMutation} deleteIsLoading={deleteIsLoading} originalArgs={originalArgs} />

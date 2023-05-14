@@ -1,5 +1,5 @@
-import { Disclosure} from '@headlessui/react'
- 
+import { Disclosure } from '@headlessui/react'
+
 import { NavLink } from 'react-router-dom'
 const RootNav = () => {
 

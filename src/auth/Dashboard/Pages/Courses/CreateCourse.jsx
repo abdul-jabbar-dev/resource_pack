@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { usePostCourseMutation } from "../../../../Redux/Api/course.api";
-import getFormData from "../../../../utils/objectToFormData";
-import Alert from "../../../../components/Alert";
+import getFormData from "../../../../utils/objectToFormData"; 
 import Loading from "../../../../Components/Loading";
 import { useRef, useState } from "react";
+import Alert from "../../../../Components/Alert";
 const CreateCourse = () => {
     const linksInput = useRef(null);
     const tagsInput = useRef(null);
@@ -15,17 +15,17 @@ const CreateCourse = () => {
     const [allLinks, setAllLinks] = useState([])
     const [alltags, setAlltags] = useState([])
     const onSubmit = (data) => {
-        courseMutation(getFormData({ ...data, courseLink: allLinks, tags: alltags, thumbnail: data.thumbnail[0] }))
+        // courseMutation(getFormData({ ...data, courseLink: allLinks, tags: alltags, thumbnail: data.thumbnail[0] }))
+        console.log({ ...data, courseLink: allLinks, tags: alltags, thumbnail: data.thumbnail[0] })
     };
 
     const getLinks = () => {
-        if ((linksInput.current.value).length > 0) {
+        if ((linksInput.current.value).length > 1) {
             setAllLinks([...allLinks, linksInput.current.value])
         }
     }
-    console.log(alltags)
     const getTags = () => {
-        if ((tagsInput.current.value).length > 0) {
+        if ((tagsInput.current.value).length > 1) {
             setAlltags([...alltags, tagsInput.current.value])
         }
     }
@@ -77,7 +77,7 @@ const CreateCourse = () => {
                         </div>
                         <div>
                             <label htmlFor="duration" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Total course duration </label>
-                            <input {...register("duration",     )} type="text" name="duration" id="duration" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="5h" required />
+                            <input {...register("duration",)} type="text" name="duration" id="duration" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="5h" required />
                         </div>
                         <div>
                             <label htmlFor="total_lectures" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Total course lectures </label>
