@@ -1,16 +1,16 @@
 
 import { Link } from "react-router-dom";
 import { useGetCourseQuery, useDeleteACourseMutation } from "../../../../Redux/Api/course.api";
-import DeleteCourseModal from "../../../../components/Dashboard/DeleteCourseModal"; 
+import DeleteCourseModal from "../../../../components/Dashboard/DeleteCourseModal";
 import { useState } from "react";
 import EditCourseModel from "../../../../Components/Dashboard/EditCourseModel";
 const AllCourse = () => {
     const [searchData, setSearchData] = useState([])
     const { "0": deleteMutation, "1": { isLoading: deleteIsLoading, originalArgs } } = useDeleteACourseMutation()
-    const { data, isSuccess } = useGetCourseQuery() 
+    const { data, isSuccess } = useGetCourseQuery()
     const getSearchValue = (word) => {
         if (word) {
-            setSearchData(data?.filter(item => ((item.name).toLowerCase()).includes(word.toLowerCase())))
+            setSearchData(data?.data.filter(item => ((item.name).toLowerCase()).includes(word.toLowerCase())))
         } else {
             setSearchData([])
         }
@@ -50,13 +50,13 @@ const AllCourse = () => {
                             <th scope="col" className="px-6 py-4 font-medium text-gray-900">Name</th>
                             <th scope="col" className="px-6 py-4 font-medium text-gray-900">State</th>
                             <th scope="col" className="px-6 py-4 font-medium text-gray-900">Post_at</th>
-                            <th scope="col" className="px-6 py-4 font-medium text-gray-900">Category</th> 
+                            <th scope="col" className="px-6 py-4 font-medium text-gray-900">Category</th>
                             <th scope="col" className="px-6 py-4 font-medium text-gray-900">Tages</th>
                             <th scope="col" className="px-3 py-4 font-medium text-gray-900">Edit </th>
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-100 border-t border-gray-100">
-                        {isSuccess && data.map((item, i) =>
+                        {isSuccess && data.data.map((item, i) =>
                             <tr key={i} className="hover:bg-gray-50">
                                 <th className="flex gap-3 px-6 py-4 font-normal text-gray-900">
                                     <div className="relative h-16  min-w-[80px]">
@@ -64,7 +64,7 @@ const AllCourse = () => {
                                     </div>
                                     <div className="text-sm">
                                         <div className="font-medium text-gray-700">{item.name}</div>
-                                        <div className="text-gray-400">{item.description.slice(0,80)}</div>
+                                        <div className="text-gray-400">{item.description.slice(0, 80)}</div>
                                     </div>
                                 </th>
 

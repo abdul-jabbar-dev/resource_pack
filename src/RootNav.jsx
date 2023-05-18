@@ -6,7 +6,7 @@ const RootNav = () => {
   const navigation = [
     // { name: 'Home', href: '/' },
     // { name: 'Course', href: '/courses' },
-    { name: 'Dashboard', href: '/dashboard' },
+    // { name: 'Dashboard', href: '/dashboard' },
 
   ]
 

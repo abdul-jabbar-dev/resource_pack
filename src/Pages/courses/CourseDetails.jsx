@@ -53,7 +53,16 @@ const CourseDetails = () => {
                     </div>
                 </div>
             </div>
+            <div className='my-8'>
+                <h2 className='text-xl  font-semibold border-slate-300 border p-3 rounded-md' >Links:
 
+                    {
+                        (data.courseLink).filter(sl => sl.length > 0).map((sLink, i) => <a key={i} target='_blank' href={sLink} className=' text-blue-950 text-md hover:underline font-normal inline' rel="noreferrer"> Click here to download </a>)
+                    }
+
+                </h2>
+
+            </div>
             <div className='my-8'>
                 <h2 className='text-xl  font-semibold border-slate-300 border p-3 rounded-md' >Requirements: </h2>
                 <p className='text-lg p-6'>{data.requirements}</p>
@@ -62,6 +71,7 @@ const CourseDetails = () => {
                 <h2 className='text-xl  font-semibold border-slate-300 border p-3 rounded-md' >Description: </h2>
                 <p className='text-lg p-6'>{data.description}</p>
             </div>
+
 
         </div>
     );

@@ -8,7 +8,7 @@ export const courseApi = createApi({
     endpoints: (builder) => ({
 
         getCourse: builder.query({
-            query: () => `/course`,
+            query: (limit) => `/course?limit=${limit}`,
             providesTags: ["course"]
         }),
         getASingleCourse: builder.query({
@@ -44,4 +44,4 @@ export const courseApi = createApi({
     })
 })
 
-export const { useGetCourseQuery, usePostCourseMutation, useDeleteACourseMutation, useUpdateCourseMutation,useGetASingleCourseQuery } = courseApi    
+export const { useGetCourseQuery, usePostCourseMutation, useDeleteACourseMutation, useUpdateCourseMutation, useGetASingleCourseQuery } = courseApi    

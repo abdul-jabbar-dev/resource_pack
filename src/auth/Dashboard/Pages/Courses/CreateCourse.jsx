@@ -15,7 +15,7 @@ const CreateCourse = () => {
     const [allLinks, setAllLinks] = useState([])
     const [alltags, setAlltags] = useState([])
     const onSubmit = (data) => {
-        // courseMutation(getFormData({ ...data, courseLink: allLinks, tags: alltags, thumbnail: data.thumbnail[0] }))
+        courseMutation(getFormData({ ...data, courseLink: allLinks, tags: alltags, thumbnail: data.thumbnail[0] }))
         console.log({ ...data, courseLink: allLinks, tags: alltags, thumbnail: data.thumbnail[0] })
     };
 

@@ -6,6 +6,8 @@ import AllCourse from "./auth/Dashboard/Pages/Courses/AllCourse";
 import CreateCourse from "./auth/Dashboard/Pages/Courses/CreateCourse";
 import DashLayout from "./auth/Dashboard/Pages/DashLayout";
 import Dashboard from "./auth/Dashboard/Pages/Dashboard";
+import JustPinAuth from "./auth/Recognization/JustPinAuth";
+import Login from "./auth/Recognization/Login";
 
 
 const Routes = () => {
@@ -30,18 +32,19 @@ const Routes = () => {
             ]
         },
         {
+            path:"/login",
+            element: (<Login />)
+        },
+        {
             path: "/dashboard",
-            element: (<DashLayout />),
+            element: (<JustPinAuth><DashLayout /></JustPinAuth>),
             children: [
                 {
                     path: "",
-                    element: (<Dashboard />),
-                }, {
-                    path: "create_course",
-                    element: (<CreateCourse />),
-                }, {
+                    element: (<JustPinAuth><Dashboard /></JustPinAuth>),
+                },  {
                     path: "courses",
-                    element: (<AllCourse />),
+                    element: (<JustPinAuth><AllCourse/></JustPinAuth>),
                 }, {
                     path: "courses/create",
                     element: (<CreateCourse />)

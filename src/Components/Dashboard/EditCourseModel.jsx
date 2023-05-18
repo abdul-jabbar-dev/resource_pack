@@ -11,7 +11,7 @@ const EditCourseModel = ({ item, deleteMutation, fromSD = false }) => {
     const [open, setOpen] = useState(false)
     const { register, handleSubmit } = useForm();
     const { "0": courseUpdateMutation, "1": { isLoading, isSuccess } } = useUpdateCourseMutation()
-    const [allLinks, setAllLinks] = useState(item.courseLink )
+    const [allLinks, setAllLinks] = useState(item.courseLink)
     const [alltags, setAlltags] = useState(item.tags)
 
     const onSubmit = (data) => {

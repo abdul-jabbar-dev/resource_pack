@@ -6,13 +6,11 @@ const SearchbarHome = ({ setSearchString }) => {
     return (
         <div>
             <header className="mx-auto max-w-screen-2xl my-6 sm:px-6 lg:px-8">
-                <div className='w-full'>
+                <div className='w-full py-3'>
 
-                    <h1 className="text-4xl">A free repository for community
-                        components using Tailwind CSS</h1>
+                    <h1 className="text-4xl">Unlock Your Potential with Free Skill Development Courses</h1>
 
-                    <p className="text-2xl mt-6 mb-6 font-extralight text-slate-600 ">Open source Tailwind UI components and  templates to
-                        bootstrap your new apps, <br />projects or landing sites!</p>
+                    <p className="text-2xl mt-6 mb-6 font-extralight lg:w-2/3 xl:w-4/5 text-slate-600 ">Empowering individuals worldwide through accessible and comprehensive free skill development courses to foster personal and professional growth.</p>
 
 
                     {/* search bar */}
