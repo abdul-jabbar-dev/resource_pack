@@ -135,7 +135,7 @@ const EditCourseModel = ({ item, deleteMutation, fromSD = false }) => {
                                         <textarea defaultValue={item.requirements} {...register("requirements", { required: true })} name="requirements" id="requirements" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                                     </div>
                                     <div className="flex w-full  ">
-                                        <img className="w-32  " src={"https://api.abduljabbardev.xyz/" + item.thumbnail} alt={item.name} />
+                                        <img className="w-32  " src={"http://resoursehack.api.abduljabbardev.xyz/" + item.thumbnail} alt={item.name} />
                                         <input multiple={false}  {...register("thumbnail")} name="thumbnail"
                                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="thumbnail" type="file" />
                                     </div>

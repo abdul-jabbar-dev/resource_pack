@@ -13,7 +13,7 @@ const CourseDetails = () => {
 
             <div className='flex gap-x-3 lg:flex-row flex-col'>
                 <div className='md:w-2/5 w-full '>
-                    <img className='max-h-[40rem]' src={"https://api.abduljabbardev.xyz/" + data?.thumbnail} alt={data?.name} />
+                    <img className='max-h-[40rem]' src={"http://resoursehack.api.abduljabbardev.xyz/" + data?.thumbnail} alt={data?.name} />
                 </div>
 
                 <div className='md:w-3/5 w-full'>
