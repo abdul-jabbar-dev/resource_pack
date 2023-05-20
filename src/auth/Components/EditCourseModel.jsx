@@ -2,7 +2,8 @@ import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import getFormData from "../../utils/objectToFormData";
 import { useUpdateCourseMutation } from "../../Redux/Api/course.api";
-import Alert from "../Alert";
+import Alert from "../../Components/Alert";
+
 
 const EditCourseModel = ({ item, deleteMutation, fromSD = false }) => {
 
