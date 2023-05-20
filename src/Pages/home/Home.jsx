@@ -9,14 +9,15 @@ const Home = () => {
     const [count, setCount] = useState(4)
     const { data, isLoading } = useGetCourseQuery(count)
     const [searchString, setSearchString] = useState('')
+    console.log(data)
     return (
         <div>
             <SearchbarHome item={searchString} setSearchString={setSearchString} />
             {
                 isLoading ? <Loading /> : <><Courses courses={data} searchWord={searchString} setCount={setCount}></Courses>
-                    {(count <= data.total) && <button className="mx-auto block border-gray-400 border px-3 py-1 rounded-md " onClick={() => setCount(count + 4)}>
+                    {(count <= data?.total) && <button className="mx-auto block border-gray-400 border px-3 py-1 rounded-md " onClick={() => setCount(count + 4)}>
                         NEXT
-                    </button>}</>}
+                    </button>}</>} 
         </div>
     );
 }
