@@ -8,8 +8,7 @@ import Loading from "../../Components/Loading";
 const Home = () => {
     const [count, setCount] = useState(4)
     const { data, isLoading } = useGetCourseQuery(count)
-    const [searchString, setSearchString] = useState('')
-    console.log(data)
+    const [searchString, setSearchString] = useState('') 
     return (
         <div>
             <SearchbarHome item={searchString} setSearchString={setSearchString} />

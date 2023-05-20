@@ -21,8 +21,7 @@ const JustPinAuth = ({ children }) => {
  
         var bytes = cryptoJs.AES.decrypt((localStorage.getItem('user')).toString(), salt);
     var  decryptedData  = bytes.toString(cryptoJs.enc.Utf8);
-    // const decryptedData = JSON.parse(info2);
-        console.log(decryptedData)
+    // const decryptedData = JSON.parse(info2); 
         if (decryptedData.toString() === pin.toString()) {
             return children
         }else{
