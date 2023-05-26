@@ -17,8 +17,8 @@ const SearchbarHome = ({ setSearchString }) => {
 
                     <div className=" relative mx-auto w-1/3 h-min  text-gray-600">
 
-                        <input onChange={e => getSearch(e.target.value)}
-                            className=" text-xl border-2 border-gray-300 w-full bg-white  h-14 px-5 pr-16 rounded-full  focus:outline-none"
+                        <input  onChange={e => getSearch(e.target.value)}
+                            className="appearance-none text-xl border-2 border-gray-300 w-full bg-white  h-14 px-5 pr-16 rounded-full  focus:outline-none"
                             type="search" name="search" placeholder="Search" >
                         </input>
 

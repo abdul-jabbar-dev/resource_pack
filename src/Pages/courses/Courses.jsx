@@ -1,19 +1,7 @@
-import { useEffect, useState } from "react";
+ 
 import { Link } from "react-router-dom";
-
-// eslint-disable-next-line react/prop-types 
-const Courses = ({ courses, searchWord, setCount }) => {
-    const [allCourse, setAllCourse] = useState([])
-
-    useEffect(() => {
-        if (searchWord) {
-            let searchingCourse = (courses.data).filter(crs => (crs.name).toLowerCase().includes(searchWord.toLowerCase()))
-            setAllCourse(searchingCourse)
-        } else {
-            setAllCourse(courses.data)
-        }
-    }, [courses, searchWord]);
-
+ 
+const Courses = ({ courses }) => { 
 
     return (
         <section className="bg-white">
@@ -21,7 +9,7 @@ const Courses = ({ courses, searchWord, setCount }) => {
 
                 <div className="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
 
-                    {allCourse?.map((cours, i) => <div key={i} className="lg:flex">
+                    {courses?.data?.map((cours, i) => <div key={i} className="lg:flex">
                         <img className="object-cover w-full h-56 rounded-lg lg:w-64" src={"http://resoursehack.api.abduljabbardev.xyz/" + cours.thumbnail} alt={cours.name} />
 
                         <div className="flex flex-col justify-between py-6 lg:mx-6">

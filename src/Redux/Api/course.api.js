@@ -11,6 +11,16 @@ export const courseApi = createApi({
             query: (limit) => `/course?limit=${limit}`,
             providesTags: ["course"]
         }),
+
+
+        getCoursBySearch: builder.query({
+            query: ({ searchString, count }) => (searchString?.length > 1) ? `/course?search=${searchString}` : `/course?limit=${count}`,
+            providesTags: ["course"]
+        }),
+
+
+
+
         getASingleCourse: builder.query({
             query: (id) => `/course/${id}`,
             providesTags: ["course"]
@@ -44,4 +54,4 @@ export const courseApi = createApi({
     })
 })
 
-export const { useGetCourseQuery, usePostCourseMutation, useDeleteACourseMutation, useUpdateCourseMutation, useGetASingleCourseQuery } = courseApi    
+export const { useGetCourseQuery, usePostCourseMutation, useDeleteACourseMutation, useUpdateCourseMutation, useGetASingleCourseQuery, useGetCoursBySearchQuery } = courseApi    

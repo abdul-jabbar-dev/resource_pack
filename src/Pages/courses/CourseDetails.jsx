@@ -5,7 +5,7 @@ import Loading from '../../Components/Loading';
 
 const CourseDetails = () => {
     const params = useParams()
-    const { data, isLoading } = useGetASingleCourseQuery(params.id) 
+    const { data, isLoading } = useGetASingleCourseQuery(params.id)
     if (isLoading) return <Loading></Loading>
     return (
         <div className=''>

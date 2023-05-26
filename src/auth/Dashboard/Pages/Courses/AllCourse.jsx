@@ -8,8 +8,8 @@ import DeleteCourseModal from "../../../Components/DeleteCourseModal";
 const AllCourse = () => {
     const [searchData, setSearchData] = useState([])
     const { "0": deleteMutation, "1": { isLoading: deleteIsLoading, originalArgs } } = useDeleteACourseMutation()
-    const { data, isSuccess } = useGetCourseQuery() 
- 
+    const { data, isSuccess } = useGetCourseQuery()
+
     const getSearchValue = (word) => {
         if (word) {
             setSearchData(data?.data.filter(item => ((item.name).toLowerCase()).includes(word.toLowerCase())))
